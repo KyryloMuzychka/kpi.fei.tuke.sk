@@ -2,7 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 #define MAX 15
-#define scanf scanf_s
+
 
 int is_word_guessed(const char secret[], const char letters_guessed[])
 {
@@ -137,11 +137,10 @@ void hangman(const char secret_word[])
     do {
 
         GetInformation(attempts, available_alphabet);
-
-        // bold and normal for Unix systems and just for using in terminal, not in IDE (perhaps)
-        //printf("\033[1m"); // bold
+        
+        printf("\033[1m"); // bold
         scanf(" %s", letters);
-        //printf("\033[0m"); // normal
+        printf("\033[0m"); // normal
 
         ToLowerCase(letters);
 
