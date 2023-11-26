@@ -43,20 +43,75 @@ void generator(const int rows, const int columns, char field[rows][columns])
   }
 }
 
+void down_possible(const int rows, const int columns, char field[rows][columns], int x, int y)
+{
+  if (x != y)
+  {
+    int x_i = -1, y_i = rows - 1;
+
+    for (int i = 0; i < rows; i++)
+    {
+      if (field[i][x] != ' ')
+      {
+        // printf("\n(x): %c", field[i][x]);
+        x_i = i;
+        break;
+      }
+    }
+
+    //printf("x_i=%i", x_i);
+
+    if (x_i != -1) // not empty column from getting element
+    {
+      for (int i = 0; i < rows; i++)
+      {
+        if (field[i][y] != ' ')
+        {
+          // printf("\n(y): %c", field[i][y]);
+          y_i = i;
+          break;
+        }
+      }
+
+      //printf("y_i=%i", y_i);
+
+      if (y_i == rows - 1)
+      {
+        field[y_i][y] = field[x_i][x];
+        field[x_i][x] = ' ';
+      }
+      else if (y_i - 1 >= 0)
+      {
+        if (field[x_i][x] == field[y_i][y])
+        {
+          field[y_i - 1][y] = field[x_i][x];
+          field[x_i][x] = ' ';
+        }
+        else
+        {
+          printf("MUST BE SAME");
+        }
+      }
+    }
+  }
+}
+
 bool check(const int rows, const int columns, char field[rows][columns])
 {
-  if (rows <= 1) {
+  if (rows <= 1)
+  {
     return true;
   }
 
   for (int i = 0; i < columns; i++)
-  {    
+  {
     for (int j = 1; j < rows; j++)
     {
-      if (field[j][i] != field[j-1][i])
+      if (field[j][i] != field[j - 1][i])
         return false;
     }
   }
+
   return true;
 }
 
