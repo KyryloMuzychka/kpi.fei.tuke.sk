@@ -10,8 +10,8 @@ void generator(const int rows, const int columns, char field[rows][columns])
 {
   srand((unsigned)time(0));
 
-  char symbols[] = {'@', '+', '^', '*'}, symbol;
-  int empty_first = rand() % columns, empty_second, count_symbols[MAX_SYMOLS] = {0}, count = 0, index;
+  char symbols[] = {'@', '+', '^', '*'};
+  int empty_first = rand() % columns, empty_second, count_symbols[MAX_SYMOLS] = {0}, index;
 
   do
   {
@@ -90,12 +90,4 @@ void game_field(const int rows, const int columns, char field[rows][columns])
   {
     printf(ANSI_BOLD ANSI_COLOR_CYAN "%7i" ANSI_COLOR_RESET, j + 1);
   }
-}
-
-int main()
-{
-  char field[4][6];
-  generator(4, 6, field);
-  game_field(4, 6, field);
-  return 0;
 }

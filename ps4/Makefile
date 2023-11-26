@@ -1,7 +1,7 @@
 # variables
 CC=gcc
 CFLAGS=-std=c11 -Wall -Werror -Wno-vla-parameter
-LDLIBS=-lm -lcurses
+LDLIBS=#-lm -lcurses
 OUTPUT=ballsortpuzzle
 
 # targets
