@@ -3,21 +3,6 @@
 #include <string.h>
 #define MAX 100
 
-
-const char *morseCodesLetters[] = {
-    ".-", "-...", "-.-.", "-..", ".",     // A-E
-    "..-.", "--.", "....", "..", ".---",  // F-J
-    "-.-", ".-..", "--", "-.", "---",     // K-O
-    ".--.", "--.-", ".-.", "...", "-",    // P-T
-    "..-", "...-", ".--", "-..-", "-.--", // U-Y
-    "--.."                                // Z
-};
-
-
-const char *morseCodesDigits[] = {
-    "-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----."};
-
-
 void Fill(char output[], int *index, const char morse[])
 {
     for (int i = 0; i < strlen(morse); i++)
@@ -38,7 +23,6 @@ void AddSymbol(char symbol[], const char *morseCodes[], int size, char output[],
     }
 }
 
-
 int CheckSymbol(char symbol[], const char *morseCodes[], int size)
 {
     for (int j = 0; j < size; j++)
@@ -49,6 +33,18 @@ int CheckSymbol(char symbol[], const char *morseCodes[], int size)
 
 void text_to_morse(const char text[], char output[])
 {
+    const char *morseCodesLetters[] = {
+        ".-", "-...", "-.-.", "-..", ".",     // A-E
+        "..-.", "--.", "....", "..", ".---",  // F-J
+        "-.-", ".-..", "--", "-.", "---",     // K-O
+        ".--.", "--.-", ".-.", "...", "-",    // P-T
+        "..-", "...-", ".--", "-..-", "-.--", // U-Y
+        "--.."                                // Z
+    };
+
+    const char *morseCodesDigits[] = {
+        "-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----."};
+
     int index = 0;
 
     for (int i = 0; i < strlen(text); i++)
@@ -63,13 +59,24 @@ void text_to_morse(const char text[], char output[])
         }
         output[index++] = ' ';
     }
-
-    output[index - 1] = '\0';
+    if (index >= 1)
+        output[index - 1] = '\0';
 }
-
 
 void morse_to_text(const char morse[], char output[])
 {
+    const char *morseCodesLetters[] = {
+        ".-", "-...", "-.-.", "-..", ".",     // A-E
+        "..-.", "--.", "....", "..", ".---",  // F-J
+        "-.-", ".-..", "--", "-.", "---",     // K-O
+        ".--.", "--.-", ".-.", "...", "-",    // P-T
+        "..-", "...-", ".--", "-..-", "-.--", // U-Y
+        "--.."                                // Z
+    };
+
+    const char *morseCodesDigits[] = {
+        "-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----."};
+
     char symbol[MAX];
     int index = 0, resultIndex = 0;
 
@@ -98,9 +105,19 @@ void morse_to_text(const char morse[], char output[])
     output[resultIndex] = '\0';
 }
 
-
 int is_morse_code_valid(const char morse[])
 {
+    const char *morseCodesLetters[] = {
+        ".-", "-...", "-.-.", "-..", ".",     // A-E
+        "..-.", "--.", "....", "..", ".---",  // F-J
+        "-.-", ".-..", "--", "-.", "---",     // K-O
+        ".--.", "--.-", ".-.", "...", "-",    // P-T
+        "..-", "...-", ".--", "-..-", "-.--", // U-Y
+        "--.."                                // Z
+    };
+
+    const char *morseCodesDigits[] = {
+        "-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----."};
 
     char symbol[MAX];
     int index = 0, valid = 1; // resultIndex = 0;
@@ -136,42 +153,4 @@ int is_morse_code_valid(const char morse[])
     }
 
     return valid;
-}
-
-
-int main()
-{
-
-    // task 5
-    // char output[150];
-    // text_to_morse("Hello", output); //prints: .... . .-.. .-.. ---
-    // puts(output);
-
-    // task 6
-    // char output[150];
-    // morse_to_text(".... . .-.. .-.. --- -----", output);
-    // printf("%s\n", output); // prints: HELLO
-
-    // task 7
-    if (is_morse_code_valid(".... . .-.. .-.. ---"))
-    {
-        printf("Code is valid! \n");
-    }
-    else
-    {
-        printf("Code is invalid! \n");
-    }
-    // prints: Code is valid!
-
-    if (is_morse_code_valid(".... . .-.--. .-.. ---"))
-    {
-        printf("Code is valid! \n");
-    }
-    else
-    {
-        printf("Code is invalid! \n");
-    }
-    // prints: Code is invalid!
-
-    return 0;
 }
