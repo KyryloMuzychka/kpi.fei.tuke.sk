@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <stdbool.h>
 #include "ballsortpuzzle.h"
 #include "style.h"
 #define MAX_SYMOLS 4
@@ -40,6 +41,23 @@ void generator(const int rows, const int columns, char field[rows][columns])
       }
     }
   }
+}
+
+bool check(const int rows, const int columns, char field[rows][columns])
+{
+  if (rows <= 1) {
+    return true;
+  }
+
+  for (int i = 0; i < columns; i++)
+  {    
+    for (int j = 1; j < rows; j++)
+    {
+      if (field[j][i] != field[j-1][i])
+        return false;
+    }
+  }
+  return true;
 }
 
 void game_field(const int rows, const int columns, char field[rows][columns])

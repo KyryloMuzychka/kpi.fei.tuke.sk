@@ -10,6 +10,6 @@ int main()
 {
   char field[4][6];
   generator(4, 6, field);
-  game_field(4, 6, field);
+  game_field(4, 6, field);  
   return 0;
 }
