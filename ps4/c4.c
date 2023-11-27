@@ -89,4 +89,82 @@ int drop_piece(int rows, int cols, char board[rows][cols], int col, char player_
   return 0;
 }
 
+int check_win(int rows, int cols, const char board[rows][cols], int row, int col, char player_piece)
+{
+  // check row
+  int count = 1;
+  for (int i = 0; i < cols - 1; ++i)
+  {
+    if (board[row][i] == player_piece && board[row][i] == board[row][i + 1])
+    {
+      count++;
+      if (count == 4)
+      {
+        return 1;
+      }
+    }
+    else
+    {
+      count = 1;
+    }
+  }
 
+  // check column
+  count = 1;
+  for (int i = 0; i < rows - 1; ++i)
+  {
+    if (board[i][col] == player_piece && board[i][col] == board[i + 1][col])
+    {
+      count++;
+      if (count == 4)
+      {
+        return 1;
+      }
+    }
+    else
+    {
+      count = 1;
+    }
+  }
+
+  // check diagonal
+  count = 1;
+  while (col > 0 && row > 0)
+  {
+    col--;
+    row--;
+  }
+
+  while (row < rows - 1 && col < cols - 1)
+  {
+    if (board[row][col] == player_piece && board[row][col] == board[row + 1][col + 1])
+    {
+      count++;
+      if (count == 4)
+      {
+        return 1;
+      }
+    }
+    else
+    {
+      count = 1;
+    }
+    row++;
+    col++;
+  }
+
+  return 0;
+}
+
+int is_board_full(int rows, int cols, const char board[rows][cols])
+{
+  for (int i = 0; i < rows; i++)
+  {
+    for (int j = 0; j < cols; j++)
+    {
+      if (board[i][j] == '.')
+        return 0;
+    }
+  }
+  return 1;
+}
