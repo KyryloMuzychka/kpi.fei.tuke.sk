@@ -181,15 +181,19 @@ void ball_sort_puzzle()
     
     game_field(MAX_ROWS, MAX_COLUMNS, field);
     
+    printf(ANSI_COLOR_CYAN);
+
     printf("Enter what: ");
     scanf("%i", &what);
     
     printf("Enter where: ");
     scanf("%i", &where);
+    
+    printf(ANSI_COLOR_RESET);
 
     down_possible(MAX_ROWS, MAX_COLUMNS, field, what-1, where-1);
  
   } while (!check(MAX_ROWS, MAX_COLUMNS, field));
   game_field(MAX_ROWS, MAX_COLUMNS, field);
-  printf("Congratulations! You won!");  
+  printf(ANSI_BOLD ANSI_COLOR_MAGENTA "Congratulations! You won!" ANSI_COLOR_RESET);  
 }
