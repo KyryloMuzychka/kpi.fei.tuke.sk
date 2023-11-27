@@ -61,3 +61,10 @@ void print_board(int rows, int cols, const char board[rows][cols])
   }
   printf(ANSI_COLOR_RESET "\n");
 }
+
+int is_valid_move(int rows, int cols, const char board[rows][cols], int col)
+{
+  if (col >= cols || col < 0)
+    return 0;
+  return (board[0][col] == '.') ? 1 : 0;
+}

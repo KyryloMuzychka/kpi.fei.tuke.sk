@@ -12,11 +12,8 @@ int main()
 {
   char field[4][4];
   initialize_board(4,4,field);
-  print_board(4,4,field);
-  
-  //game_field(4,4,field);
-  ball_sort_puzzle();
-  //initialize_board(4,4,field);
-  
+  print_board(4,4,field);  
+  printf("\n\n%i\n\n", is_valid_move(4,4,field,0));
+  ball_sort_puzzle();  
   return 0;
 }
