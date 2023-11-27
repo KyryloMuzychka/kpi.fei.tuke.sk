@@ -3,18 +3,20 @@
 #include <time.h>
 #include <string.h>
 #include "ballsortpuzzle.h"
+
+#include "c4.h"
+
 #include "style.h"
-#define MAX_SYMOLS 4
 
 int main()
 {
-  // char field[4][6];
-  // generator(4, 6, field);
-  // game_field(4, 6, field);  
-  // down_possible(4, 6, field, 0, 1);
-  // printf("\n");
-  // game_field(4, 6, field);  
-  // check(4,6,field);
+  char field[4][4];
+  initialize_board(4,4,field);
+  print_board(4,4,field);
+  
+  //game_field(4,4,field);
   ball_sort_puzzle();
+  //initialize_board(4,4,field);
+  
   return 0;
 }

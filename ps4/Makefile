@@ -1,3 +1,6 @@
+# run with
+# gcc main.c .\ballsortpuzzle.c .\c4.c -std=c11 -Werror -Wall -Wno-vla-parameter
+
 # variables
 CC=gcc
 CFLAGS=-std=c11 -Wall -Werror -Wno-vla-parameter
