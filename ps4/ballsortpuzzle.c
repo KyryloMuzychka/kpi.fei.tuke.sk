@@ -6,6 +6,8 @@
 #include "ballsortpuzzle.h"
 #include "style.h"
 #define MAX_SYMOLS 4
+#define MAX_ROWS 4
+#define MAX_COLUMNS 6
 
 void generator(const int rows, const int columns, char field[rows][columns])
 {
@@ -47,7 +49,7 @@ void down_possible(const int rows, const int columns, char field[rows][columns],
 {
   if (x != y)
   {
-    int x_i = -1, y_i = rows - 1;
+    int x_i = -1, y_i = - 1;
 
     for (int i = 0; i < rows; i++)
     {
@@ -69,27 +71,29 @@ void down_possible(const int rows, const int columns, char field[rows][columns],
         {
           // printf("\n(y): %c", field[i][y]);
           y_i = i;
+          //printf("\n\ny_i====%i\n\n", y_i);
           break;
         }
       }
 
       //printf("y_i=%i", y_i);
 
-      if (y_i == rows - 1)
+      if (y_i == - 1)
       {
-        field[y_i][y] = field[x_i][x];
+        field[rows-1][y] = field[x_i][x];
         field[x_i][x] = ' ';
       }
       else if (y_i - 1 >= 0)
       {
         if (field[x_i][x] == field[y_i][y])
         {
+          //printf("\n2)y_i======%i\n",y_i);
           field[y_i - 1][y] = field[x_i][x];
           field[x_i][x] = ' ';
         }
         else
         {
-          printf("MUST BE SAME");
+          printf("MUST BE SAME\n");
         }
       }
     }
@@ -163,4 +167,29 @@ void game_field(const int rows, const int columns, char field[rows][columns])
   {
     printf(ANSI_BOLD ANSI_COLOR_CYAN "%7i" ANSI_COLOR_RESET, j + 1);
   }
+  printf("\n");
+}
+
+void ball_sort_puzzle()
+{
+  int what, where;
+  char field[MAX_ROWS][MAX_COLUMNS];
+  generator(4, 6, field);
+
+  do {
+    //system("cls");
+    
+    game_field(MAX_ROWS, MAX_COLUMNS, field);
+    
+    printf("Enter what: ");
+    scanf("%i", &what);
+    
+    printf("Enter where: ");
+    scanf("%i", &where);
+
+    down_possible(MAX_ROWS, MAX_COLUMNS, field, what-1, where-1);
+ 
+  } while (!check(MAX_ROWS, MAX_COLUMNS, field));
+  game_field(MAX_ROWS, MAX_COLUMNS, field);
+  printf("Congratulations! You won!");  
 }

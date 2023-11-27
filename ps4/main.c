@@ -8,12 +8,13 @@
 
 int main()
 {
-  char field[4][6];
-  generator(4, 6, field);
-  game_field(4, 6, field);  
-  down_possible(4, 6, field, 0, 1);
-  printf("\n");
-  game_field(4, 6, field);  
-  check(4,6,field);
+  // char field[4][6];
+  // generator(4, 6, field);
+  // game_field(4, 6, field);  
+  // down_possible(4, 6, field, 0, 1);
+  // printf("\n");
+  // game_field(4, 6, field);  
+  // check(4,6,field);
+  ball_sort_puzzle();
   return 0;
 }
