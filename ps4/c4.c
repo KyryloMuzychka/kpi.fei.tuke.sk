@@ -15,7 +15,7 @@ void initialize_board(int rows, int cols, char board[rows][cols])
 
 void print_line(int cols)
 {
-  printf("  ");
+  //printf("  ");
   for (int j = 0; j < cols; j++)
   {
     printf("----");
@@ -31,7 +31,7 @@ void print_board(int rows, int cols, const char board[rows][cols])
 
   for (int i = 0; i < rows; i++)
   {
-    printf(ANSI_COLOR_CYAN "%i ", i + 1);
+    //printf(ANSI_COLOR_CYAN "%i ", i + 1);
     printf(ANSI_COLOR_GREEN);
     for (int j = 0; j < cols; j++)
     {
@@ -53,10 +53,10 @@ void print_board(int rows, int cols, const char board[rows][cols])
     print_line(cols);
   }
   printf(ANSI_COLOR_CYAN);
-  printf("   ");
+  //printf("   ");
   for (int i = 0; i < cols; i++)
   {
-    printf(" %i  ", i + 1);
+    printf("  %i ", i + 1);
   }
   printf(ANSI_COLOR_RESET "\n");
 }
@@ -127,7 +127,7 @@ int check_win(int rows, int cols, const char board[rows][cols], int row, int col
     }
   }
 
-  // check diagonal
+  /* check diagonal (main) "\" */
   count = 1;
   while (col > 0 && row > 0)
   {

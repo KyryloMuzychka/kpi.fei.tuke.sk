@@ -121,13 +121,6 @@ bool check(const int rows, const int columns, char field[rows][columns])
 
 void game_field(const int rows, const int columns, char field[rows][columns])
 {
-  // printf(ANSI_BOLD ANSI_COLOR_RED "Этот текст красный и жирный\n" ANSI_COLOR_RESET);
-  // printf(ANSI_BOLD ANSI_COLOR_GREEN "Этот текст зелёный и жирный\n" ANSI_COLOR_RESET);
-  // printf(ANSI_BOLD ANSI_COLOR_YELLOW "Этот текст жёлтый и жирный\n" ANSI_COLOR_RESET);
-  // printf(ANSI_BOLD ANSI_COLOR_BLUE "Этот текст синий и жирный\n" ANSI_COLOR_RESET);
-  // printf(ANSI_BOLD ANSI_COLOR_MAGENTA "Этот текст пурпурный и жирный\n" ANSI_COLOR_RESET);
-  // printf(ANSI_BOLD ANSI_COLOR_CYAN "Этот текст голубой и жирный\n" ANSI_COLOR_RESET);
-
   for (int i = 0; i < rows; i++)
   {
     printf(ANSI_BOLD ANSI_COLOR_CYAN " %i " ANSI_COLOR_RESET, i + 1);
