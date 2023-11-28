@@ -47,6 +47,7 @@ void generator(const int rows, const int columns, char field[rows][columns])
 
 void down_possible(const int rows, const int columns, char field[rows][columns], int x, int y)
 {
+  x--; y--;
   if (x != y)
   {
     int x_i = -1, y_i = - 1;
@@ -184,7 +185,7 @@ void ball_sort_puzzle()
     
     printf(ANSI_COLOR_RESET);
 
-    down_possible(MAX_ROWS, MAX_COLUMNS, field, what-1, where-1);
+    down_possible(MAX_ROWS, MAX_COLUMNS, field, what, where);
  
   } while (!check(MAX_ROWS, MAX_COLUMNS, field));
   game_field(MAX_ROWS, MAX_COLUMNS, field);

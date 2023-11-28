@@ -63,6 +63,7 @@ void print_board(int rows, int cols, const char board[rows][cols])
 
 int is_valid_move(int rows, int cols, const char board[rows][cols], int col)
 {
+  col--;
   if (col >= cols || col < 0)
     return 0;
   return (board[0][col] == '.') ? 1 : 0;
@@ -70,6 +71,7 @@ int is_valid_move(int rows, int cols, const char board[rows][cols], int col)
 
 int drop_piece(int rows, int cols, char board[rows][cols], int col, char player_piece)
 {
+  col--;
   if (board[rows - 1][col] == '.')
   {
     board[rows - 1][col] = player_piece;
@@ -91,6 +93,8 @@ int drop_piece(int rows, int cols, char board[rows][cols], int col, char player_
 
 int check_win(int rows, int cols, const char board[rows][cols], int row, int col, char player_piece)
 {
+  int start_col = col, start_row = row;
+
   // check row
   int count = 1;
   for (int i = 0; i < cols - 1; ++i)
@@ -152,6 +156,37 @@ int check_win(int rows, int cols, const char board[rows][cols], int row, int col
     row++;
     col++;
   }
+
+  /* check diagonal "/" */
+  count = 1;
+  col = start_col; row = start_row;
+  while (col < cols && row > 0)
+  {
+    col++;
+    row--;
+  }
+
+
+  while (row < rows - 1 && col > 0)
+  {
+    if (board[row][col] == player_piece && board[row][col] == board[row + 1][col - 1])
+    {
+      count++;
+      if (count == 4)
+      {
+        return 1;
+      }
+    }
+    else
+    {
+      count = 1;
+    }
+    row++;
+    col--;
+  }
+
+
+
 
   return 0;
 }
