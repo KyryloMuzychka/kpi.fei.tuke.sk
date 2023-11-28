@@ -80,25 +80,10 @@ int drop_piece(int rows, int cols, char board[rows][cols], int col, char player_
     if (i >= 0)
     {
       board[i][col] = player_piece;
-      return 1;
+      //printf("\ni=%i\n",i);
+      return i;
     }
   }
-  // if (board[rows - 1][col] == '.')
-  // {
-  //   board[rows - 1][col] = player_piece;
-  //   return 1;
-  // }
-  // else
-  // {
-  //   for (int i = 0; i < rows; i++)
-  //   {
-  //     if (board[i][col] != '.' && i != 0)
-  //     {
-  //       board[i - 1][col] = player_piece;
-  //       return 1;
-  //     }
-  //   }
-  // }
   return 0;
 }
 

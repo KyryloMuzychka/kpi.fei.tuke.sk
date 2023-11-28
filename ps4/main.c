@@ -26,16 +26,12 @@ void connect_four()
       printf("Player 2, enter your move (1-%i): ", C4_MAX_COLS);
     }
     scanf(" %i", &move);
-
-    if (is_valid_move(C4_MAX_ROWS, C4_MAX_COLS, board, move) && drop_piece(C4_MAX_ROWS, C4_MAX_COLS, board, move, player))
+    
+    if (is_valid_move(C4_MAX_ROWS, C4_MAX_COLS, board, move))
     {
-      int row_ = 0;
-
-      while (board[row_++][move-1] == '.');   
-      
-      row_--;
-
-      printf("row = %i", row_);
+      int row_ = drop_piece(C4_MAX_ROWS, C4_MAX_COLS, board, move, player);
+    
+      // printf("row = %i", row_);
 
       if (check_win(C4_MAX_ROWS, C4_MAX_COLS, board, row_, move-1, player))
       {
@@ -57,6 +53,6 @@ void connect_four()
 int main()
 {
   connect_four();
-  ball_sort_puzzle();
+  //ball_sort_puzzle();
   return 0;
 }
