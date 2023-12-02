@@ -11,7 +11,7 @@
 				"${fileDirname}/${fileBasenameNoExtension}",
 				"${file}",
 				// "-I${workspaceFolder}/pdcurses",
-				"${workspaceFolder}/ps6/libpdcurses.a"
+				"${workspaceFolder}/ps6/pdcurses.a"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
