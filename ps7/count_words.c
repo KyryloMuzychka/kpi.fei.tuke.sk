@@ -6,15 +6,16 @@
 int main()
 {
   FILE *file = fopen("bananas1.txt", "r");
-  char find[] = {"ananas"};
+  char find[] = {"ANANAS"};
+  
+    
   int size = sizeof(find) / sizeof(find[0]) - 1, index = 0, count = 0;
-
-  do
+  char c;
+  
+  while ((c = fgetc(file)) != EOF)
   {
-
-    char c = fgetc(file);
-
-    if (tolower(c) == find[index] && index != size - 1)
+   
+    if (((int)c == (int)find[index] || (int)c == (int)find[index] + 32) && index != size - 1)
     {
       index++;
     }
@@ -27,14 +28,11 @@ int main()
     {
       index = 0;
     }
-  } while (!feof(file));
+  }
 
   fclose(file);
-
-  file = fopen("bananas1.txt", "w");
-
-  fprintf(file, "%d\n", count);
-
+  file = fopen("bananas1.txt", "w");  
+  fputc(count + '0', file);
   fclose(file);
 
   return 0;
