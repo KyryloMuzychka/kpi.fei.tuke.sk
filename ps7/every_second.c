@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdbool.h>
 
 #define MAX 500
@@ -15,7 +14,7 @@ int DeleteStop(char result[], int size_result, char stop[], int size_stop)
         }
         else if (j == size_stop)
         {
-            result[i - size_stop-1] = '\0';
+            result[i - size_stop] = '\0';
             break;
         }
         else
@@ -39,23 +38,24 @@ int main()
 
     char start[] = "START", result[MAX];
     char stop[] = "STOP", output_array[MAX];
-    int sizeStart = sizeof(start) / sizeof(start[0]) - 1, index = 0, i = 0, index_stop = 0;
+    int sizeStart = sizeof(start) / sizeof(start[0]) - 1, index = 0, i = 0;
     bool write = false;
+    
+    do {
+    int c = fgetc(file);
 
-    do
-    {
-        char c = fgetc(file);
-
-        if (c == start[index] && index < sizeStart)
-        {
+    if (c != EOF) {
+        if (c == start[index] && index < sizeStart) {
             index++;
-        }
-        else
-        {
+        } else {
             index = 0;
         }
+    } else {
+        break;
+    }
 
-    } while (!feof(file) && !(index == sizeStart));
+    } while (!(index == sizeStart));
+
     
     fgetc(file);
     
@@ -101,7 +101,11 @@ int main()
 
         // printf("%s\n", output_array);
 
-        fputs(output_array, output);
+        for (int k = 0; k < y; k++)
+        {
+            fputc(output_array[k], output);
+        }
+        
     }
 
     fclose(file);
